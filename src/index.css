@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-cream-50 text-charcoal-800 font-sans antialiased;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif text-charcoal-900;
+    line-height: 1.2;
+  }
+
+  /* Visible focus states for keyboard navigation */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-accent-500;
+  }
+}
+
+@layer components {
+  .container-px {
+    @apply px-6 sm:px-8 lg:px-12;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-charcoal-900 px-8 py-3.5 text-sm font-medium tracking-wide text-cream-50 transition-all duration-300 hover:bg-accent-600 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-charcoal-900/20 bg-transparent px-8 py-3.5 text-sm font-medium tracking-wide text-charcoal-900 transition-all duration-300 hover:border-charcoal-900 hover:bg-charcoal-900 hover:text-cream-50;
+  }
+
+  .section-eyebrow {
+    @apply mb-4 text-xs font-medium uppercase tracking-[0.25em] text-accent-600;
+  }
+
+  .input-field {
+    @apply w-full rounded-xl border border-stone-300 bg-cream-50 px-4 py-3 text-sm text-charcoal-800 placeholder-stone-400 transition-colors duration-200 focus:border-accent-500 focus:outline-none focus:ring-1 focus:ring-accent-500;
+  }
+
+  .form-label {
+    @apply mb-1.5 block text-sm font-medium text-charcoal-700;
+  }
+
+  .form-error {
+    @apply mt-1.5 text-sm text-red-600;
+  }
+}
+
+/* Reveal-on-scroll animation hook */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.reveal.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

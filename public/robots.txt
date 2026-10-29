@@ -1,0 +1,17 @@
+# robots.txt for the photography website
+# Update the production domain before deploying.
+
+User-agent: *
+Allow: /
+
+# Do not block CSS, JS, or images
+Allow: /assets/
+Allow: /*.css
+Allow: /*.js
+Allow: /*.jpg
+Allow: /*.png
+Allow: /*.webp
+Allow: /*.svg
+
+# Sitemap location — update with your production domain
+Sitemap: https://www.example.com/sitemap.xml
