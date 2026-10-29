@@ -184,4 +184,4 @@ public/
 
 ## License
 
-This is a template project. Replace all placeholder content, images, and business information before using in production.
+This is a template project. Replace all placeholder content, images, and business information before using in production. 
