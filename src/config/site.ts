@@ -30,6 +30,7 @@ export interface PortfolioCategory {
 export const siteConfig = {
   // ---- Branding -------------------------------------------------------------
   businessName: "Photovani",
+  brandDisplay: "Photovani — Photographer in Washington, D.C.",
   tagline: "Photovani - Photography Services",
   photographerName: "Photovani",
 
@@ -243,5 +244,4 @@ export interface NavItem {
 
 export const navItems: NavItem[] = [
   { label: "Home", path: "/" },
-  { label: "Contact", path: "/contact" },
 ];

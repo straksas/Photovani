@@ -1,6 +1,6 @@
 import { Seo } from '@/components/Seo';
 import { Reveal } from '@/components/Reveal';
-import { SectionHeading, CTAButton } from '@/components/ui/Section';
+import { SectionHeading } from '@/components/ui/Section';
 import { services, type ServiceCategory } from '@/config/site';
 import { siteConfig } from '@/config/site';
 
@@ -48,9 +48,6 @@ function ServiceBlock({
         {service.shortDescription}
       </p>
       <p className="mt-4 leading-relaxed text-stone-600">{service.description}</p>
-      <div className="mt-8">
-        <CTAButton to="/contact">Plan your {eyebrow.toLowerCase()} session</CTAButton>
-      </div>
     </Reveal>
   );
 
@@ -111,9 +108,6 @@ export function HomePage() {
             Professional photography in Washington, D.C., Falls Church.
             Genuine moments, beautiful light, and images you'll return to for years.
           </p>
-          <div className="mt-10 flex animate-fade-up justify-center gap-4 [animation-delay:0.3s]">
-            <CTAButton to="/contact">Book a session</CTAButton>
-          </div>
         </div>
 
         {/* Scroll indicator */}
@@ -170,9 +164,6 @@ export function HomePage() {
               effortless. You'll leave with a curated gallery of timeless images you'll be
               proud to print, share, and look back on for years to come.
             </p>
-            <div className="mt-8">
-              <CTAButton to="/contact">Plan your portrait session</CTAButton>
-            </div>
           </Reveal>
           <Reveal>
             <div className="relative mx-auto max-w-lg">
@@ -209,11 +200,6 @@ export function HomePage() {
               Reach out to check availability and start planning your photography session in{' '}
               {siteConfig.primaryCity}.
             </p>
-            <div className="mt-8">
-              <CTAButton to="/contact" className="bg-cream-50 text-charcoal-900 hover:bg-accent-600 hover:text-cream-50">
-                Start your inquiry
-              </CTAButton>
-            </div>
           </Reveal>
         </div>
       </section>

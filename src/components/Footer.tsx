@@ -1,20 +1,17 @@
 import { Camera, Mail, Phone, Instagram, Facebook } from 'lucide-react';
-import { navItems, siteConfig } from '@/config/site';
-import { useNavigate } from '@/lib/router';
+import { siteConfig } from '@/config/site';
 
 export function Footer() {
-  const navigate = useNavigate();
-
   return (
     <footer className="border-t border-stone-200 bg-cream-100">
       <div className="container-px mx-auto max-w-8xl py-14">
-        <div className="grid gap-10 md:grid-cols-3">
+        <div className="grid gap-10 md:grid-cols-2">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2">
               <Camera size={20} className="text-accent-600" />
               <span className="font-serif text-lg font-semibold text-charcoal-900">
-                {siteConfig.businessName}
+                {siteConfig.brandDisplay}
               </span>
             </div>
             <p className="mt-3 max-w-xs text-sm text-stone-600">
@@ -22,25 +19,6 @@ export function Footer() {
               {siteConfig.stateRegion} area.
             </p>
           </div>
-
-          {/* Nav */}
-          <nav aria-label="Footer navigation">
-            <h2 className="mb-3 text-xs font-semibold uppercase tracking-widest text-stone-500">
-              Pages
-            </h2>
-            <ul className="space-y-2">
-              {navItems.map((item) => (
-                <li key={item.path}>
-                  <button
-                    onClick={() => navigate(item.path)}
-                    className="text-sm text-charcoal-700 transition-colors hover:text-accent-600"
-                  >
-                    {item.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </nav>
 
           {/* Contact */}
           <div>
