@@ -1,6 +1,5 @@
 // ============================================================================
-// Site configuration — edit this file to update business information.
-// No component code needs to change when you update values here.
+// Site configuration — Photovani
 // ============================================================================
 
 export interface ServiceCategory {
@@ -28,40 +27,38 @@ export interface PortfolioCategory {
 }
 
 export const siteConfig = {
-  // ---- Branding -------------------------------------------------------------
+  // Branding
   businessName: "Photovani",
-  brandDisplay: "Photovani — Photographer in Washington, D.C.",
+  brandDisplay: "Photovani — Photographer serving Washington, D.C. and Falls Church, Virginia.",
   tagline: "Photovani - Photography Services",
   photographerName: "Photovani",
 
-  // ---- Domain (update to your production domain before deploy) -------------
-  productionDomain: "https://www.example.com",
+  // Domain
+  productionDomain: "https://photovani.com",
 
-  // ---- Location / Service Area ----------------------------------------------
-  // Update these to reflect the real city and areas you serve.
-  primaryCity: "Your City",
-  serviceAreas: ["Your City", "Surrounding Region"],
-  stateRegion: "Your State",
+  // Location / Service Area
+  primaryCity: "Washington, D.C. area",
+  serviceAreas: ["Washington, D.C.", "Falls Church, Virginia"],
+  stateRegion: "Washington, D.C. and Northern Virginia",
 
-  // ---- Contact --------------------------------------------------------------
+  // Contact
   email: "info@photovani.com",
-  phone: "", // Leave empty ("") if no phone number yet — it won't display
-  instagram: "", // Optional social handle (without @), leave "" to hide
-  instagramUrl: "", // Full URL if set, e.g. https://instagram.com/yourhandle
-  facebookUrl: "", // Full URL, leave "" to hide
+  phone: "",
+  instagram: "",
+  instagramUrl: "",
+  facebookUrl: "",
 
-  // ---- SEO defaults ---------------------------------------------------------
+  // SEO defaults
   defaultLocale: "en",
-  defaultOgImage: "/og-image.jpg", // Place a 1200×630 image in /public
+  defaultOgImage: "/og-image.jpg",
 
-  // ---- Intro copy (used on homepage) ----------------------------------------
+  // Homepage introduction
   introHeading: "Capturing life's most tender moments",
-    introParagraph:
-      "I'm a professional photographer specializing in maternity, couples, family, and individual photography in {city}. My approach is relaxed and natural — I focus on genuine emotion, soft light, and the small details that make your story yours. Every session is tailored to you, so your photographs feel personal, timeless, and true.",
+  introParagraph:
+    "I'm a professional photographer specializing in maternity, couples, family, and individual photography in the Washington, D.C. area and Falls Church, Virginia. My approach is relaxed and natural — I focus on genuine emotion, soft light, and the small details that make your story yours. Every session is tailored to you, so your photographs feel personal, timeless, and true.",
 };
 
-// ---- Services --------------------------------------------------------------
-
+// Services
 export const services: ServiceCategory[] = [
   {
     slug: "maternity",
@@ -98,8 +95,7 @@ export const services: ServiceCategory[] = [
   },
 ];
 
-// ---- Portfolio -------------------------------------------------------------
-
+// Portfolio
 export const portfolioCategories: PortfolioCategory[] = [
   {
     slug: "maternity",
@@ -235,8 +231,7 @@ export const portfolioCategories: PortfolioCategory[] = [
   },
 ];
 
-// ---- Navigation ------------------------------------------------------------
-
+// Navigation
 export interface NavItem {
   label: string;
   path: string;
