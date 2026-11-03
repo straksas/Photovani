@@ -9,45 +9,42 @@ export interface SeoProps {
   structuredData?: object | object[];
 }
 
-const ensureMeta = (selector: string, create: () => HTMLElement): HTMLElement => {
+const ensureMeta = (
+  selector: string,
+  create: () => HTMLElement,
+): HTMLElement => {
   let el = document.head.querySelector(selector) as HTMLElement | null;
+
   if (!el) {
     el = create();
     document.head.appendChild(el);
   }
+
   return el;
 };
 
 function setMeta(attr: 'name' | 'property', key: string, content: string) {
-  const el = ensureMeta(
-    `meta[${attr}="${key}"]`,
-    () => {
-      const m = document.createElement('meta');
-      m.setAttribute(attr, key);
-      return m;
-    },
-  );
+  const el = ensureMeta(`meta[${attr}="${key}"]`, () => {
+    const meta = document.createElement('meta');
+    meta.setAttribute(attr, key);
+    return meta;
+  });
+
   el.setAttribute(attr, key);
   el.setAttribute('content', content);
 }
 
 function setLink(rel: string, href: string) {
-  const el = ensureMeta(
-    `link[rel="${rel}"]`,
-    () => {
-      const l = document.createElement('link');
-      l.setAttribute('rel', rel);
-      return l;
-    },
-  );
+  const el = ensureMeta(`link[rel="${rel}"]`, () => {
+    const link = document.createElement('link');
+    link.setAttribute('rel', rel);
+    return link;
+  });
+
   el.setAttribute('rel', rel);
   el.setAttribute('href', href);
 }
 
-/**
- * Manages all document head tags for a page: title, meta description,
- * canonical URL, Open Graph, Twitter card, and optional JSON-LD.
- */
 export function Seo({
   title,
   description,
@@ -59,12 +56,15 @@ export function Seo({
     ? title
     : `${title} | ${siteConfig.businessName}`;
 
-  const canonicalUrl = `${siteConfig.productionDomain}${path}`;
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  const baseUrl = siteConfig.productionDomain.replace(/\/$/, '');
+  const canonicalUrl = `${baseUrl}${normalizedPath}`;
+
   const imageUrl = ogImage
     ? ogImage.startsWith('http')
       ? ogImage
-      : `${siteConfig.productionDomain}${ogImage}`
-    : `${siteConfig.productionDomain}${siteConfig.defaultOgImage}`;
+      : `${baseUrl}${ogImage.startsWith('/') ? '' : '/'}${ogImage}`
+    : `${baseUrl}${siteConfig.defaultOgImage}`;
 
   useEffect(() => {
     document.title = fullTitle;
@@ -82,13 +82,13 @@ export function Seo({
     setMeta('property', 'og:image', imageUrl);
     setMeta('property', 'og:locale', siteConfig.defaultLocale);
 
-    // Twitter
+    // X (Twitter)
     setMeta('name', 'twitter:card', 'summary_large_image');
     setMeta('name', 'twitter:title', fullTitle);
     setMeta('name', 'twitter:description', description);
     setMeta('name', 'twitter:image', imageUrl);
 
-    // Structured data (JSON-LD)
+    // JSON-LD structured data
     const existing = document.getElementById('page-structured-data');
     if (existing) existing.remove();
 
@@ -101,10 +101,16 @@ export function Seo({
     }
 
     return () => {
-      const sd = document.getElementById('page-structured-data');
-      if (sd) sd.remove();
+      const current = document.getElementById('page-structured-data');
+      if (current) current.remove();
     };
-  }, [fullTitle, description, canonicalUrl, imageUrl, structuredData]);
+  }, [
+    fullTitle,
+    description,
+    canonicalUrl,
+    imageUrl,
+    structuredData,
+  ]);
 
   return null;
 }
